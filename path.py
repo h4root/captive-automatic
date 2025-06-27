@@ -1,7 +1,12 @@
 import os
 import subprocess
-import tkinter as tk
-from tkinter import filedialog
+import sys
+try:
+    import tkinter as tk
+    from tkinter import filedialog
+except ImportError:
+    print("\033[91m[SETUP]\033[0m tkinter is not installed. On Linux, try: sudo apt-get install python3-tk")
+    exit()
 
 print("\033[92m[SETUP]\033[0m Выбрать директорию со скриптами? [Y/N]")
 
@@ -55,4 +60,4 @@ selected_script = scripts[selection - 1]
 # Подтверждение
 print(f"\n\033[92m[SETUP]\033[0m Запуск {selected_script}...")
 # Запуск выбранного скрипта
-subprocess.run(["python", selected_script])
+subprocess.run([sys.executable, selected_script])
